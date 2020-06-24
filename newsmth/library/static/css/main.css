@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+@import url('//db.onlinewebfonts.com/c/aba29c74d9c0c9e0e7f7b612a9e899c7?family=ITC+Benguiat');
+
+header {
+    height: 60px;
+    background-color: #1f1f1f;
+    padding-top: 10px;
+}
+header a {
+    font-family: 'Notable', sans-serif;
+    color: white;
+    text-decoration: none;
+    margin-left: 200;
+    font-size: 30px;
+}
+body {
+    padding: 0;
+    margin: 0;
+}
+footer {
+    height: 60px;
+    background-color: #1f1f1f;
+    bottom: 0;
+    width: 100%;
+    padding-top: 10px;
+}
+footer p {
+    font-family: 'ITC Benguiat', sans-serif;
+    color: #eea51a;
+    text-align: center;
+    margin: 0;
+    font-size: 12px;
+}
+.inline {
+    display: inline-block;
+}

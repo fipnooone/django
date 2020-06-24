@@ -1,0 +1,134 @@
+<html>
+    <title>Movies</title>
+    <head>
+        {% load static %}
+        <link rel="icon" href="{% static "favicon.png" %}" type="image/png">
+        <link rel="stylesheet" href="{% static "css/main.css" %}">
+        <style>
+            .movies {
+                margin: 70px 300px 50px 300px;
+            }
+            .count {
+                font-family: 'Raleway', sans-serif;
+                font-size: 25px;
+                font-weight: 800;
+            }            
+            .list {
+                margin-left: 100px;
+                font-family: 'Nunito', sans-serif;
+                text-decoration: none;
+            }
+            .list .movie {
+                margin-bottom: 50px;
+                width: 800px;
+                box-shadow: 0 1px 6px #878787;
+                border-radius: 3px;
+                background-color: #f5f1eb;
+            }
+            .list .movie:hover {
+                box-shadow: 0 1px 8px #878787;
+                background-color: white;
+            }
+            .more .name {
+                font-size: 20px;
+                color: black;
+                margin: 20px 0 10px 5px;
+            }
+            .more .litblock {
+                color: darkgray;
+                margin: 0 0 0 25px;
+            }
+            .more .litblock p{
+                margin: 0 0 0 2px;
+            }
+            .more {
+                position: absolute;
+                margin-top: 0;
+                margin-left: 18px;
+            }
+            br {
+                font-size: 0;
+            }
+            .search-box {
+                position: absolute;
+                margin-left: 50px;
+                width: 180px;
+                height: 155px;
+                box-shadow: 0 1px 6px #878787;
+                font-family: 'Nunito', sans-serif;
+                border-radius: 10px;
+            }
+            .search-box .name {
+                margin: 5px 0 0 20px;
+            }
+            .search-box .search-name {
+                margin: 5px 0 0 15px;
+                width: 150px;
+                padding: 3px 0 3px 8px;
+                font-family: 'Nunito', sans-serif;
+                border-radius: 4px;
+                border: 2px solid #eea51a;
+                border-color: #ababab;
+            }
+            .search-box .do-search {
+                margin: 20px 0 0 40px;
+                padding: 1px 10px 1px 10px;
+                font-family: 'Nunito', sans-serif;
+                border-radius: 4px;
+                border: 2px solid #eea51a;
+                background-color: white;
+                width: 100px;    
+                text-align: center;
+            }
+            .search-box .do-search:hover{
+                background-color: #eea51a;
+                color: white;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="/movies">The site</a>
+        </header>
+        <div class="movies">
+            <p class="count">Результаты поиска: {{num_movies}}</p>
+            <div class="list inline">
+                {% if movies %}
+                {% for movie in movies %}
+                <a href="{{movie.get_absolute_url}}">
+                    <div class="movie">
+                        <img class="inline" src="{{movie.image.url}}" height=180px type="image/png">
+                        <div class="inline more">
+                            <p class="name">{{movie.name}}</p> <br>
+                            {% if movie.genre.all %}
+                            <div class="litblock">
+                                <p class="year inline">{{movie.year}}</p>
+                                <p class="inline">•</p>
+                                {% for genre in movie.genre.all %}
+                                <p class="genre inline">{{genre}}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="search-box inline">
+                <p class="name">Поиск:</p>
+                <form action="search">
+                    <input type="text" class="search-name" placeholder="Название фильма" name="q">
+                    <input type="text" class="search-name" placeholder="Год" name="y">
+                    <input type="submit" value="Искать" class="do-search">
+                </form>
+            </div>
+        </div>
+        <footer>
+            <p>QUENTINED AND TARANTINED BY</p>
+            <p>WRITTIN</p>
+            <p>DIRECTINO</p>
+        </footer>
+    </body>
+</html>

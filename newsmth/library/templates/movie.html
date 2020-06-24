@@ -1,0 +1,61 @@
+<html>
+    <title>Movies</title>
+    <head>
+        {% load static %}
+        <link rel="icon" href="{% static "favicon.png" %}" type="image/png">
+        <link rel="stylesheet" href="{% static "css/main.css" %}">
+        <style>
+            footer {
+                position: absolute;
+            }
+            .movie {
+                margin: 100px 0 0 440px;
+            }
+            .info {
+                position: absolute;
+            }
+            .name {
+                font-family: 'Raleway', sans-serif;
+                font-size: 28px;
+                margin: 10px 0 0 40px;
+                font-weight: 800;
+            }
+            .c-173 {
+                width: 500px;
+                margin: 10px 0 0 60px;
+                font-family: 'Nunito', sans-serif;
+            }
+            .mrg {
+                margin: 10px 0 0 0;
+            }
+            .genres .genre{
+                margin: 0 4px 0 0;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="/movies">The site</a>
+        </header>
+        <div class="movie">
+            <img class="inline" src="{{movie.image.url}}" height="350">
+            <div class="info inline">
+                <p class="name">{{movie.name}}</p>
+                <div class="c-173">
+                    <p class="year mrg">Год: {{movie.year}}</p>
+                    <div class="genres mrg"> Жанр:
+                        {% for genre in movie.genre.all %}
+                        <p class="genre inline">{{genre}}</p>
+                        {% endfor %}
+                    </div>
+                    <p class="description mrg">Описание: {{movie.description}}</p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>QUENTINED AND TARANTINED BY</p>
+            <p>WRITTIN</p>
+            <p>DIRECTINO</p>
+        </footer>
+    </body>
+</html>
